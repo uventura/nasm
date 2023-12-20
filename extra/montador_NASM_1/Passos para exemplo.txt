@@ -1,0 +1,52 @@
+0) As instruções assumem que você possui o depurador GDB. Caso não o possua ainda, é possível adquiri-lo em: (https://www.sourceware.org/gdb/download/).
+	- Para se certificar que possui o depurador, digite no terminal o comando "man gdb" (sem aspas) para abrir o manual dele. Pressione "q" para fechá-lo.
+
+
+1) Compilar o código fonte "exemplo.asm".
+
+	nasm -f elf64 -o [nome_objeto].o [nome_fonte].asm
+	ld [nome_objeto].o -o [nome_executável]
+
+
+2) Executar o programa. Ele não deve imprimir nada no terminal devido ao erro destacado no código fonte.
+
+	./[nome_executável]
+
+
+3) Para depurar o programa, digite no terminal o comando "gdb -q [nome_executável]" (sem aspas). O seguinte deve aparecer no terminal:
+
+	Reading symbols from [nome_executável]...
+	(No debugging symbols found in [nome_executável])
+	(gdb)
+	
+
+4) Antes de iniciar a depuração, é necessário criar um ponto de parada ("breakpoint"). Em Assembly, só é possível adicionar ditos pontos em RÓTULOS (neste caso, "example:"), para tal, use o comando "break example" (sem aspas). Se tudo der certo, será retornado um número hexadecimal (e.g. 0x401000) dizendo onde o ponto de parada está.
+
+
+5) Para executar o programa, use "run" (sem aspas).
+
+	Starting program: [nome_qualificado]
+
+
+6) Após isso, use "layout asm" (sem aspas) para ver o código sendo executado passo a passo.
+	- A sintaxe apresentada é um pouco diferente daquela do código fonte, isso pode ser alterado com o comando "set disassembly-flavor intel";
+	- A linha de código destacada é a instrução a ser executada no momento, ela deve ser a primeira após o rótulo no qual se colocou o ponto de parada.
+
+
+7) Para ver o conteúdo nos registradores, use "layout regs" (sem aspas).
+
+
+8) Ainda na linha de comando, insira "stepi" (sem aspas) para executar uma instrução, dessa forma você poderá observar alterações feitas nos registradores.
+	- Após "stepi", basta pressionar "Enter" para executar mais instruções.
+
+
+9) Para ver o conteúdo de um endereço de memória (e.g. 0x402000), basta copiar ele e usar o comando "x/s [endereço]" (sem aspas) para examinar a string no endereço.
+
+
+10) Para continuar a percorrer o algoritmo e realizar a depuração, use "stepi" novamente. Observando os valores dos registradores, deve observar o problema no código: que o "rdx" não recebeu o comprimento do texto a ser impresso.
+
+
+11) Quando as instruções acabarem, use Ctrl+C e insira "q" para encerrar o depurador.
+
+
+12) Realize a correção no código fonte, e tente executá-lo novamente.
