@@ -26,7 +26,7 @@ section .data
 
 global _start               ; Inicialização do programa...
 _start:
-    mov ebx, 3             ; Contador INICIAL do laço for(Número de laços será linha 31 - 41)
+    mov ebx, 3             ; Contador INICIAL do laço for
 
     loopFor ebx,imprime
 
