@@ -1,0 +1,11 @@
+* Talvez seja necessário definir os rótulos nos quais se deseja colocar pontos de parada como globais.
+
+* Comandos adicionais do GDB: não digite as aspas.
+	- "disassemble [rótulo_com_ponto_de_parada]": ver bytes do programa;
+	- "info registers": mostra o que há nos registradores de inteiros;
+	- "info float": mostra o que há nos registradores de ponto flutuante;
+	- "print/x $[nome_de_registrador]": permite ver registrador específico;
+	- "print/d $[nome_de_registrador]": alternativa ao comando acima;
+	- "info stack": mostra a pilha;
+	- "info file": mostra ponto de entrada;
+	- "next": executa o programa até o fim.
